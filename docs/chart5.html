@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+        #vis {
+            position: relative;
+            /* width: 400px; */
+            /* height: 500px;
+          bottom: 10px;
+          right: 0px; */
+            /* overflow-y:scroll */
+        }
+        
+        #text {
+            position: relative;
+            /* width: 400px; */
+            /* height: 500px;
+          bottom: 10px; */
+            left: 30px;
+            right: 30px;
+            /* overflow-y:scroll */
+        }
+        
+        #main {
+            position: fixed;
+            height: 600px;
+            width: 1200px;
+            bottom: 10px;
+            right: 10px;
+            overflow-y: scroll;
+        }
+    </style>
+    <meta charset="utf-8" />
+    <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
+    <link rel="icon" type="image/png" href="assets/img/favicon.png">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>
+    </title>
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+    <!--     Fonts and icons     -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+    <!-- CSS Files -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="assets/css/paper-dashboard.css?v=2.0.0" rel="stylesheet" />
+    <!-- CSS Just for demo purpose, don't include it in your project -->
+    <link href="../assets/demo/demo.css" rel="stylesheet" />
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega@3"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega-lite@2.6.0"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega-embed@3"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+</head>
+
+<body class="">
+    <div class="wrapper ">
+        <div class="sidebar" data-color="white" data-active-color="danger">
+            <!--
+        Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
+    -->
+            <div class="logo">
+                Data Visualization
+            </div>
+            <div class="sidebar-wrapper">
+              <ul class="nav">
+                  <li class="active">
+                      <a href="index.html">
+                          <p>Introduction</p>
+                      </a>
+                  </li>
+                  <li>
+                      <a href="chart1.html">
+                          <!-- <i class="nc-icon nc-diamond"></i> -->
+                          <p>Visualization 1</p>
+                      </a>
+                  </li>
+                  <li>
+                      <a href="chart2.html">
+                          <!-- <i class="nc-icon nc-pin-3"></i> -->
+                          <p>Visualization 2</p>
+                      </a>
+                  </li>
+                  <li>
+                      <a href="chart3.html">
+                          <!-- <i class="nc-icon nc-bell-55"></i> -->
+                          <p>Visualization 3</p>
+                      </a>
+                  </li>
+                  <li>
+                      <a href="chart4.html">
+                          <!-- <i class="nc-icon nc-single-02"></i> -->
+                          <p>Visualization 4</p>
+                      </a>
+                  </li>
+                  <li>
+                      <a href="chart5.html">
+                          <!-- <i class="nc-icon nc-tile-56"></i> -->
+                          <p>Visualization 5</p>
+                      </a>
+                  </li>
+                  <li>
+                      <a href="chart6.html">
+                          <!-- <i class="nc-icon nc-caps-small"></i> -->
+                          <p>Visualization 6</p>
+                      </a>
+                  </li>
+				  <li>
+                      <a href="chart7.html">
+                          <!-- <i class="nc-icon nc-caps-small"></i> -->
+                          <p>Visualization 7</p>
+                      </a>
+                  </li>
+				  <li>
+                      <a href="chart8.html">
+                          <!-- <i class="nc-icon nc-caps-small"></i> -->
+                          <p>Visualization 8</p>
+                      </a>
+                  </li>
+				  <li>
+                      <a href="chart9.html">
+                          <!-- <i class="nc-icon nc-caps-small"></i> -->
+                          <p>Visualization 9</p>
+                      </a>
+                  </li>
+              </ul>
+          </div>
+        </div>
+        <div class="main-panel">
+            <!-- Navbar -->
+            <nav class="navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent">
+                <div class="container-fluid">
+                    <div class="navbar-wrapper">
+                        <a class="navbar-brand" href="#pablo">Heatmap of Away Wins for all teams from 1995 to 2018</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+
+    <script src="../assets/js/core/jquery.min.js"></script>
+    <script src="../assets/js/core/popper.min.js"></script>
+    <script src="../assets/js/core/bootstrap.min.js"></script>
+    <script src="../assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+    <!--  Google Maps Plugin    -->
+
+    <!-- Chart JS -->
+    <script src="../assets/js/plugins/chartjs.min.js"></script>
+    <!--  Notifications Plugin    -->
+    <script src="../assets/js/plugins/bootstrap-notify.js"></script>
+    <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
+    <script src="../assets/js/paper-dashboard.min.js?v=2.0.0" type="text/javascript"></script>
+    <!-- Paper Dashboard DEMO methods, don't include it in your project! -->
+    <script src="../assets/demo/demo.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Javascript method's body can be found in assets/assets-for-demo/js/demo.js
+            demo.initChartsPages();
+        });
+    </script>
+
+
+    <!-- Graph content-->
+
+
+    <div id="main">
+
+        <div id="vis" class="content">
+            <div class="container-fluid">
+
+                <div class="output_wrapper">
+                    <div class="output">
+
+
+                        <div class="output_area">
+
+                            <div class="prompt"></div>
+
+
+
+                            <div class="output_html rendered_html output_subarea ">
+                                <script type="text/javascript">
+                                    window.PlotlyConfig = {
+                                        MathJaxConfig: 'local'
+                                    };
+                                    if (window.MathJax) {
+                                        MathJax.Hub.Config({
+                                            SVG: {
+                                                font: "STIX-Web"
+                                            }
+                                        });
+                                    }
+                                    if (typeof require !== 'undefined') {
+                                        require.undef("plotly");
+                                        requirejs.config({
+                                            paths: {
+                                                'plotly': ['https://cdn.plot.ly/plotly-latest.min']
+                                            }
+                                        });
+                                        require(['plotly'], function(Plotly) {
+                                            window._Plotly = Plotly;
+                                        });
+                                    }
+                                </script>
+
+                            </div>
+
+                        </div>
+
+                        <div class="output_area">
+
+                            <div class="prompt"></div>
+
+
+
+                            <div class="output_html rendered_html output_subarea ">
+                                <script type="text/javascript">
+                                    window.PlotlyConfig = {
+                                        MathJaxConfig: 'local'
+                                    };
+                                    if (window.MathJax) {
+                                        MathJax.Hub.Config({
+                                            SVG: {
+                                                font: "STIX-Web"
+                                            }
+                                        });
+                                    }
+                                    if (typeof require !== 'undefined') {
+                                        require.undef("plotly");
+                                        requirejs.config({
+                                            paths: {
+                                                'plotly': ['https://cdn.plot.ly/plotly-latest.min']
+                                            }
+                                        });
+                                        require(['plotly'], function(Plotly) {
+                                            window._Plotly = Plotly;
+                                        });
+                                    }
+                                </script>
+
+                            </div>
+
+                        </div>
+
+                        <div class="output_area">
+
+                            <div class="prompt"></div>
+
+
+
+                            <div class="output_html rendered_html output_subarea ">
+                                <script type="text/javascript">
+                                    window.PlotlyConfig = {
+                                        MathJaxConfig: 'local'
+                                    };
+                                    if (window.MathJax) {
+                                        MathJax.Hub.Config({
+                                            SVG: {
+                                                font: "STIX-Web"
+                                            }
+                                        });
+                                    }
+                                    if (typeof require !== 'undefined') {
+                                        require.undef("plotly");
+                                        requirejs.config({
+                                            paths: {
+                                                'plotly': ['https://cdn.plot.ly/plotly-latest.min']
+                                            }
+                                        });
+                                        require(['plotly'], function(Plotly) {
+                                            window._Plotly = Plotly;
+                                        });
+                                    }
+                                </script>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="output_wrapper">
+                    <div class="output">
+                        <div class="output_area">
+
+                            <div class="prompt"></div>
+
+
+
+                            <div class="output_html rendered_html output_subarea ">
+                                <div>
+
+
+                                    <div id="5918fcc7-201e-4510-9edd-1c068f53acf8" class="plotly-graph-div" style="height:800px; width:100%;"></div>
+                                    <script type="text/javascript">
+                                        require(["plotly"], function(Plotly) {
+                                            window.PLOTLYENV = window.PLOTLYENV || {};
+                                            window.PLOTLYENV.BASE_URL = 'https://plot.ly';
+
+                                            if (document.getElementById("5918fcc7-201e-4510-9edd-1c068f53acf8")) {
+                                                Plotly.newPlot(
+                                                    '5918fcc7-201e-4510-9edd-1c068f53acf8', 
+													[{
+                                                        "colorscale": [[0, "#b3f542"], [0.3, "#f5f242"], [0.6, "#f5b642"], [1, "#f54242"]],
+                                                        "type": "heatmap",
+                                                        "uid": "bdeff4ee-a071-45d1-860e-4e5f0ebad974",
+                                                        "x": [1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018], 
+						"y": ["Arsenal", "Aston Villa", "Barnsley", "Birmingham", "Blackburn", "Blackpool", "Bolton", "Bournemouth", "Bradford", "Brighton", "Burnley", "Cardiff", "Charlton", "Chelsea", "Coventry", "Crystal Palace", "Derby", "Everton", "Fulham", "Huddersfield", "Hull", "Ipswich", "Leeds", "Leicester", "Liverpool", "Man City", "Man United", "Middlesboro", "Middlesbrough", "Newcastle", "Norwich", "Nott'm Forest", "Portsmouth", "QPR", "Reading", "Sheffield United", "Sheffield Weds", "Southampton", "Stoke", "Sunderland", "Swansea", "Tottenham", "Watford", "West Brom", "West Ham", "Wigan", "Wimbledon", "Wolves"], 
+						"z": [[0.3, 0.42105263157894735, 0.42105263157894735, 0.42105263157894735, 0.5, 0.3, 0.47368421052631576, 0.631578947368421, 0.5263157894736842, 0.631578947368421, 0.3684210526315789, 0.45, 0.3888888888888889, 0.47368421052631576, 0.5263157894736842, 0.42105263157894735, 0.3888888888888889, 0.45, 0.6842105263157895, 0.42105263157894735, 0.631578947368421, 0.3888888888888889, 0.3333333333333333, 0.125], [0.4, 0.3684210526315789, 0.2, 0.5555555555555556, 0.21052631578947367, 0.3684210526315789, 0.2222222222222222, 0.1, 0.10526315789473684, 0.3157894736842105, 0.2631578947368421, 0.15, 0.3888888888888889, 0.47368421052631576, 0.3684210526315789, 0.3333333333333333, 0.25, 0.15789473684210525, 0.3333333333333333, 0.2, 0.15789473684210525, 0.0, 0.0, 0.0], [0.0, 0.0, 0.18181818181818182, 0.125, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.2727272727272727, 0.35294117647058826, 0.15, 0.10526315789473684, 0.0, 0.2, 0.0, 0.4, 0.05555555555555555, 0.2, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [0.0, 0.21052631578947367, 0.2631578947368421, 0.05263157894736842, 0.1111111111111111, 0.0, 0.2222222222222222, 0.25, 0.3684210526315789, 0.3157894736842105, 0.25, 0.29411764705882354, 0.4, 0.2631578947368421, 0.15789473684210525, 0.2631578947368421, 0.10526315789473684, 0.1111111111111111, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.45454545454545453, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [0.0, 0.3333333333333333, 0.09090909090909091, 0.125, 0.0, 0.0, 0.3, 0.15789473684210525, 0.21052631578947367, 0.3684210526315789, 0.47368421052631576, 0.2631578947368421, 0.10526315789473684, 0.3157894736842105, 0.11764705882352941, 0.19047619047619047, 0.16666666666666666, 0.3, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.3, 0.2631578947368421, 0.15789473684210525, 0.2222222222222222], [0.0, 0.0, 0.0, 0.0, 0.2, 0.05263157894736842, 0.1111111111111111, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.18181818181818182, 0.0], [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.1111111111111111, 0.0, 0.0, 0.0, 0.1111111111111111, 0.2, 0.0, 0.22727272727272727, 0.375], [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.1111111111111111, 0.1, 0.0, 0.0, 0.0, 0.0], [0.0, 0.0, 0.0, 0.09090909090909091, 0.375, 0.18181818181818182, 0.2777777777777778, 0.25, 0.3888888888888889, 0.2631578947368421, 0.35294117647058826, 0.0, 0.1111111111111111, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [0.3, 0.3157894736842105, 0.42857142857142855, 0.23529411764705882, 0.4444444444444444, 0.15, 0.4, 0.3157894736842105, 0.5, 0.6842105263157895, 0.8333333333333334, 0.55, 0.5789473684210527, 0.7894736842105263, 0.5789473684210527, 0.42105263157894735, 0.4444444444444444, 0.4, 0.3888888888888889, 0.6, 0.3888888888888889, 0.6842105263157895, 0.6, 0.4444444444444444], [0.1, 0.15789473684210525, 0.21052631578947367, 0.21052631578947367, 0.1111111111111111, 0.14285714285714285, 0.125, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [0.0, 0.0, 0.4166666666666667, 0.14285714285714285, 0.0, 0.0, 0.0, 0.0, 0.0, 0.1, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.2, 0.21052631578947367, 0.6111111111111112, 0.10526315789473684, 0.25, 0.3333333333333333], [0.0, 0.1, 0.2, 0.2777777777777778, 0.21052631578947367, 0.1, 0.1111111111111111, 0.2222222222222222, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [0.2, 0.42105263157894735, 0.05, 0.2222222222222222, 0.25, 0.2777777777777778, 0.16666666666666666, 0.2857142857142857, 0.17647058823529413, 0.25, 0.25, 0.2222222222222222, 0.3157894736842105, 0.5789473684210527, 0.2222222222222222, 0.25, 0.29411764705882354, 0.23809523809523808, 0.2777777777777778, 0.3, 0.3333333333333333, 0.25, 0.1, 0.25], [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.125, 0.14285714285714285, 0.2222222222222222, 0.2, 0.1, 0.10526315789473684, 0.0, 0.16666666666666666, 0.21052631578947367, 0.05263157894736842, 0.15, 0.21052631578947367, 0.3157894736842105, 0.1111111111111111, 0.0, 0.0, 0.0, 0.0], [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.2, 0.1111111111111111], [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.4, 0.05263157894736842, 0.0, 0.0, 0.0, 0.1111111111111111, 0.2, 0.1111111111111111, 0.1111111111111111, 0.0, 0.0], [0.0, 0.0, 0.0, 0.0, 0.0, 0.6, 0.2222222222222222, 0.2, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [0.3, 0.15789473684210525, 0.3684210526315789, 0.2631578947368421, 0.5263157894736842, 0.2222222222222222, 0.6666666666666666, 0.42105263157894735, 0.23529411764705882, 0.1, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [0.0, 0.3, 0.3333333333333333, 0.25, 0.3333333333333333, 0.35, 0.1, 0.0, 0.2222222222222222, 0.1, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.2, 0.42105263157894735, 0.2777777777777778, 0.23809523809523808, 0.25], [0.3, 0.47368421052631576, 0.3684210526315789, 0.2631578947368421, 0.2222222222222222, 0.35, 0.5789473684210527, 0.5263157894736842, 0.4444444444444444, 0.25, 0.4117647058823529, 0.4090909090909091, 0.5, 0.5263157894736842, 0.5263157894736842, 0.1111111111111111, 0.47368421052631576, 0.3, 0.3684210526315789, 0.6111111111111112, 0.4, 0.5263157894736842, 0.47368421052631576, 0.4444444444444444], [0.1, 0.1111111111111111, 0.0, 0.0, 0.0, 0.2, 0.2222222222222222, 0.36363636363636365, 0.2777777777777778, 0.21052631578947367, 0.2631578947368421, 0.2, 0.23529411764705882, 0.2, 0.21052631578947367, 0.47368421052631576, 0.3888888888888889, 0.5, 0.3888888888888889, 0.7, 0.3333333333333333, 0.55, 0.75, 0.75], [0.4, 0.47368421052631576, 0.55, 0.4117647058823529, 0.5789473684210527, 0.6666666666666666, 0.4444444444444444, 0.5263157894736842, 0.7777777777777778, 0.4, 0.6842105263157895, 0.6842105263157895, 0.5263157894736842, 0.47368421052631576, 0.7368421052631579, 0.35294117647058826, 0.55, 0.65, 0.5789473684210527, 0.3333333333333333, 0.4, 0.4444444444444444, 0.5, 0.5555555555555556], [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.1, 0.2222222222222222, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [0.18181818181818182, 0.1111111111111111, 0.1111111111111111, 0.3, 0.2777777777777778, 0.25, 0.25, 0.375, 0.375, 0.2857142857142857, 0.17647058823529413, 0.13636363636363635, 0.2631578947368421, 0.1111111111111111, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.1, 0.0, 0.0], [0.4, 0.3684210526315789, 0.23529411764705882, 0.09523809523809523, 0.25, 0.2777777777777778, 0.3684210526315789, 0.2631578947368421, 0.3333333333333333, 0.1, 0.2, 0.2631578947368421, 0.2222222222222222, 0.10526315789473684, 0.1111111111111111, 0.3333333333333333, 0.3, 0.21052631578947367, 0.3888888888888889, 0.2, 0.16666666666666666, 0.0, 0.2, 0.2222222222222222], [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.1111111111111111, 0.25, 0.16666666666666666, 0.0, 0.2, 0.1111111111111111, 0.0, 0.0], [0.2, 0.15789473684210525, 0.2222222222222222, 0.1, 0.3333333333333333, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.21052631578947367, 0.10526315789473684, 0.3, 0.3333333333333333, 0.2631578947368421, 0.05263157894736842, 0.1111111111111111, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [0.18181818181818182, 0.125, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.3, 0.0, 0.2222222222222222, 0.0, 0.2, 0.0, 0.0, 0.0], [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.2727272727272727, 0.1111111111111111, 0.2222222222222222, 0.0, 0.0, 0.0, 0.0, 0.2222222222222222, 0.0, 0.0, 0.0, 0.0, 0.0], [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.3, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [0.2, 0.21052631578947367, 0.21052631578947367, 0.15789473684210525, 0.25, 0.25, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [0.1, 0.05263157894736842, 0.2631578947368421, 0.21052631578947367, 0.15789473684210525, 0.15789473684210525, 0.2631578947368421, 0.21052631578947367, 0.2222222222222222, 0.1, 0.1111111111111111, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.1111111111111111, 0.25, 0.4444444444444444, 0.2631578947368421, 0.3684210526315789, 0.25, 0.2222222222222222], [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.15789473684210525, 0.3333333333333333, 0.15789473684210525, 0.1, 0.10526315789473684, 0.2631578947368421, 0.3157894736842105, 0.21052631578947367, 0.15, 0.125], [0.0, 0.2, 0.1111111111111111, 0.0, 0.4444444444444444, 0.23809523809523808, 0.2777777777777778, 0.1, 0.0, 0.0, 0.125, 0.09090909090909091, 0.0, 0.2631578947368421, 0.05263157894736842, 0.10526315789473684, 0.3333333333333333, 0.2, 0.15789473684210525, 0.3333333333333333, 0.1, 0.15789473684210525, 0.2222222222222222, 0.0], [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.4, 0.21052631578947367, 0.2222222222222222, 0.3157894736842105, 0.21052631578947367, 0.23809523809523808, 0.0], [0.45454545454545453, 0.3333333333333333, 0.10526315789473684, 0.2631578947368421, 0.2631578947368421, 0.1, 0.2777777777777778, 0.2, 0.17647058823529413, 0.4, 0.16666666666666666, 0.2, 0.2631578947368421, 0.21052631578947367, 0.3157894736842105, 0.3888888888888889, 0.45, 0.3684210526315789, 0.5555555555555556, 0.47368421052631576, 0.42105263157894735, 0.42105263157894735, 0.55, 0.5555555555555556], [0.0, 0.0, 0.0, 0.0, 0.1, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.2222222222222222, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.4444444444444444, 0.21052631578947367, 0.25, 0.0], [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.09090909090909091, 0.25, 0.0, 0.05263157894736842, 0.1111111111111111, 0.0, 0.1, 0.0, 0.2, 0.3333333333333333, 0.3, 0.15789473684210525, 0.2222222222222222, 0.2631578947368421, 0.2, 0.05263157894736842, 0.2222222222222222], [0.3, 0.16666666666666666, 0.18181818181818182, 0.23529411764705882, 0.15789473684210525, 0.3157894736842105, 0.15789473684210525, 0.21052631578947367, 0.2222222222222222, 0.0, 0.2727272727272727, 0.2222222222222222, 0.5, 0.2, 0.15789473684210525, 0.05263157894736842, 0.1111111111111111, 0.2222222222222222, 0.10526315789473684, 0.3157894736842105, 0.2, 0.2631578947368421, 0.2, 0.25], [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.5555555555555556, 0.3, 0.10526315789473684, 0.2777777777777778, 0.15, 0.16666666666666666, 0.2, 0.3684210526315789, 0.2222222222222222, 0.0, 0.0, 0.0, 0.0, 0.0], [0.2727272727272727, 0.3888888888888889, 0.2222222222222222, 0.2, 0.10526315789473684, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.2, 0.16666666666666666, 0.15, 0.1111111111111111, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]]
+						}], {
+                                                        "title": {
+                                                            "text": "Away Wins for all EPL Teams from 1995 to 2018"
+                                                        },
+                                                        "xaxis": {
+                                                            "nticks": 40,
+                                                            "ticks": ""
+                                                        },
+                                                        "yaxis": {
+															"nticks": 60,
+                                                            "ticks": ""
+                                                        }
+                                                    }, {
+                                                        "showLink": false,
+                                                        "linkText": "Export to plot.ly",
+                                                        "plotlyServerURL": "https://plot.ly",
+                                                        "responsive": true
+                                                    }
+                                                ).then(function() {
+
+                                                    var gd = document.getElementById('5918fcc7-201e-4510-9edd-1c068f53acf8');
+                                                    var x = new MutationObserver(function(mutations, observer) {
+                                                        {
+                                                            var display = window.getComputedStyle(gd).display;
+                                                            if (!display || display === 'none') {
+                                                                {
+                                                                    console.log([gd, 'removed!']);
+                                                                    Plotly.purge(gd);
+                                                                    observer.disconnect();
+                                                                }
+                                                            }
+                                                        }
+                                                    });
+
+                                                    // Listen for the removal of the full notebook cells
+                                                    var notebookContainer = gd.closest('#notebook-container');
+                                                    if (notebookContainer) {
+                                                        {
+                                                            x.observe(notebookContainer, {
+                                                                childList: true
+                                                            });
+                                                        }
+                                                    }
+
+                                                    // Listen for the clearing of the current output cell
+                                                    var outputEl = gd.closest('.output');
+                                                    if (outputEl) {
+                                                        {
+                                                            x.observe(outputEl, {
+                                                                childList: true
+                                                            });
+                                                        }
+                                                    }
+
+                                                })
+                                            };
+                                        });
+                                    </script>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div id="text" style='padding: 1px; width: 900px; word-wrap: break-word;'>
+
+
+            <p style="font-size:160%;">
+                 The above heatmap shows the wins at Away for all EPL teams from 1995 to 2018. The colour code is given on the right hand side with darker colors for more wins and lighter for less. 
+				The number of wins are normalised to fall within the range of 0-1 which is easier to represent. We can see that the Big Six teams are a bit stronger away than the weaker ones.  This graph is produced using plotly and is also interactive.
+				</p>
+        </div>
+    </div>
+
+
+</body>
+
+</html>
